@@ -1,36 +1,61 @@
 'use strict';
 
-//Arrays demonstration
+var i = 600;
 
-//arrays are ordered using indexes. Each value is assigned a unique index, begining with 0.
+function genHourlyCust(location) {
+  var randGen = Math.floor(Math.random() * (location.maxCust - location.minCust + 1)) + location.minCust;
+  return randGen;
+}
 
-var names = ['Rowen', 'Rachel', 'Name', 'Name']
+var pike = {
+  minCust: 23,
+  maxCust: 65,
+  avgCust: 6.3,
+  gen: function () {
+    return genHourlyCust(pike);
+  },
+};
 
-var rowen = names[0];
+var seaTac = {
+  minCust: 3,
+  maxCust: 24,
+  avgCust: 1.2,
+  gen: function () {
+    return genHourlyCust(seaTac);
+  },
 
-console.log(rowen)
+};
 
-//Will replace index 1 with 'againbutts'.
-names[1]= 'againbutts';
+var seaCenter = {
+  minCust: 11,
+  maxCust: 38,
+  avgCust: 3.7,
+  gen: function () {
+    return genHourlyCust(seaCenter);
+  },
+};
 
-//Adds an item to the end of an array.
-names.push('butts');
+var theHill = {
+  minCust: 20,
+  maxCust: 38,
+  avgCust: 2.3,
+  gen: function () {
+    return genHourlyCust(theHill);
+  },
+};
 
-//Removes the last item of an array.
-names.pop();
+var alki = {
+  minCust: 2,
+  maxCust: 16,
+  avgCust: 4.6,
+  gen: function () {
+    return genHourlyCust(alki);
+  },
 
-//Adds an item to the begining of an array.
-names.unshift('frontbutts');
-
-//Splice lets us add or remove items from an array.
-//names.splice(index, howmany, item, item);
-//index determines where the splice happens
-//howmany will remove this many values from the array at the index
-//Splice will then add the items into the array at the index
-names.splice(1, 1, 'Scout');
-
-//indexOf will search the array for an index containing the data specified in the argument.
-names.indexOf("Rachel");
-
-//example: this will search the array 'name' for Rachel, then remove that item from the array.
-names.splice(name.indexOf("Rachel"), 1);
+  genReport: function () {
+    for (i = 600; i < 2000; i += 100) {
+      if (i<)
+      console.log(i + ' hours:' + alki.gen() + 'cookies');
+    }
+  },
+};
