@@ -15,16 +15,33 @@ function genHourlyReport(location) {
   console.log(location.genResults);
 }
 /*
-function register() {
-  var ids = ['name','lname','email','password','cpassword'];
-  var printThis = "";
-  for (var i = 0; i < ids.length; i++){
-    printThis += "<br>"+ids[i];
+documentselect UL
+firstchild (li)
+next sibling (li2)
+print
+next sibling (li3)
+print
+parentnode (ul1)
+next sibling (u2)
+firstchild (li1 of u2)
+next sibling (li2 of u2)
+
+
+function register(location) {
+  location.gen();
+  var printThis = '';
+  for (var i = 0; i < location.genResults.length; i++) {
+    printThis += '<li>' + location.genResults[i] + '</li>';
   }
-  return printThis; // <-- to be printed to the div
+
+  return printThis;
 }
-document.getElementById('ids').innerHTML = register();
+
+document.queryselector('ul').innerHTML = register();
+var nextItem = document.queryselector('ul')
+document.nextSibling
 */
+
 var pike = {
   minCust: 23,
   maxCust: 65,
