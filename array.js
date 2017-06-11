@@ -1,168 +1,87 @@
 'use strict';
 
-var i = 600;
+//the constructor for each of my stores
 
-function genHourlyReport(location) {
-  for (i = 600; i <= 2000; i += 100) {
+function Store(name, minCust, maxCust, avgCust) {
+  this.name = name;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCust = avgCust;
+  this.genResults = [];
+}
+
+//generates a random number between minCust and maxCust and pushes it into an an object's array.
+function gen(location) {
+  for (var i = 600; i <= 2000; i += 100) {
     var randGen = Math.floor(Math.random() * (location.maxCust - location.minCust + 1)) + location.minCust;
-    if (i < 1000) {
-      location.genResults.push('<li> 0' + i + ' hours:' + randGen + ' cookies </li>');
-    } else {
-      location.genResults.push('<li>' + i + ' hours:' + randGen + ' cookies</li>');
+    location.genResults.push(randGen);
     }
-  }
-
-  console.log(location.genResults);
 }
 
-var pike = {
-  name: 'pike',
-  minCust: 23,
-  maxCust: 65,
-  avgCust: 6.3,
-  genResults: [],
-  gen: function () {
-    genHourlyReport(pike);
-  },
-};
 
-var seaTac = {
-  name: 'seaTac',
-  minCust: 3,
-  maxCust: 24,
-  avgCust: 1.2,
-  genResults: [],
-  gen: function () {
-    return genHourlyReport(seaTac);
-  },
-
-};
-
-var seaCenter = {
-  name: 'seaCenter',
-  minCust: 11,
-  maxCust: 38,
-  avgCust: 3.7,
-  genResults: [],
-  gen: function () {
-    return genHourlyReport(seaCenter);
-  },
-};
-
-var theHill = {
-  name: 'theHill',
-  minCust: 20,
-  maxCust: 38,
-  avgCust: 2.3,
-  genResults: [],
-  gen: function () {
-    return genHourlyReport(theHill);
-  },
-};
-
-var alki = {
-  name: 'alki',
-  minCust: 2,
-  maxCust: 16,
-  avgCust: 4.6,
-  genResults: [],
-  gen: function () {
-    return genHourlyReport(alki);
-  },
-};
-
-pike.gen();
-seaTac.gen();
-seaCenter.gen();
-theHill.gen();
-alki.gen();
-
-var locationObjects = [];
-locationObjects.push(pike.name);
-locationObjects.push(seaTac.name);
-locationObjects.push(seaCenter.name);
-locationObjects.push(theHill.name);
-locationObjects.push(alki.name);
-console.log(locationObjects);
-var reportResults = [];
-reportResults.push(pike.genResults);
-reportResults.push(seaTac.genResults);
-reportResults.push(seaCenter.genResults);
-reportResults.push(theHill.genResults);
-reportResults.push(alki.genResults);
-console.log(reportResults);
-
-var ul = document.createElement('ul');
-document.body.appendChild(ul);
-
-for (var i = 1; i <= reportResults.length; i++) {
-  var li = document.createElement('li');
-  li.className = 'report';
-  var a = document.createElement('a');
-  a.innerHTML = locationObjects[i] + reportResults[i];
-
-  li.appendChild(a);
-  ul.appendChild(li);
-}
-
-//populate array with randos
-/*
-for (i = 0; i <= locationLength; i++) {
-  console.log(locationObjects[i]);
-  genHourlyReport(locationObjects[i]);
-  console.log(locationObjects[i].genResults);
-}
-
-var x = 0;
-var locationLength = locationObjects.length;
-console.log('number of locations: ' + locationLength);
-
-//this function supposedly creates list items
-function reporting(objectName) {
-  for (x = 0; x <= locationLength; x++) {
+//superGen generates projections for each of our stores
+function superGen() {
+  for (var x = 0; x < locationObjects.length; x++) {
     console.log(x);
-    var node = document.createElement('LI');
-    var liNode = document.createTextNode(locationObjects.genResults[x]);
-    var totalNode = document.createTextNode(locationObjects.genResults[x]);
-    document.createElement('UL' + ' id = ' + i);
-    node.appendChild(liNode);
+    gen(locationObjects[x]);
   }
 }
 
-//this loop creates list items from each index in genResults
-for (i = 0; i >= locationLength; i++) {
+//var rowEl = document.querySelector('tr');
+var rowEl = document.createElement('tr');
+var dataEl = document.createElement('td');
+var tableBodyEl = document.createElement('tbody');
+var tableEl = document.getElementById('pike');
 
-  //Write the total into the results array on the last cycle.
-  for (i = 0; i < 14; i++) {
-    node.appendChild(totalNode);
-    document.getElementById('firstAndPike').appendChild(node);
+tableEl.appendChild(tableBodyEl);
+
+function printProjections(store) {
+  var rowEl = document.createElement('tr');
+  tableBodyEl.appendChild(rowEl);
+  var dataEl = document.createElement('td');
+  dataEl.textContent = store.name;
+  rowEl.appendChild(dataEl);
+
+  for (var i = 0; i < 15; i++) {
+    var dataEl = document.createElement('td');
+    dataEl.textContent = store.genResults[i];
+
+    console.log(dataEl);
+
+    rowEl.appendChild(dataEl);
+  }
+
+  console.log(rowEl);
+  console.log(dataEl);
+}
+
+//superMakeRow makes rows for each item in locationObjects
+function superMakeRow() {
+  superGen();
+  for (var i = 0; i < locationObjects.length; i++) {
+    printProjections(locationObjects[i]);
   }
 }
 
+//tableEl.appendChild(tableBodyEl);
 
-documentselect UL
-firstchild (li)
-next sibling (li2)
-print
-next sibling (li3)
-print
-parentnode (ul1)
-next sibling (u2)
-firstchild (li1 of u2)
-next sibling (li2 of u2)
+//using the constructor to create 5 stores
+var pike = new Store('pike', 23, 65, 6.3);
+var seaTac = new Store('seaTac', 3, 24, 1.2);
+var seaCenter = new Store('seaCenter', 11, 38, 3.7);
+var theHill = new Store('theHill', 20, 38, 2.3);
+var alki = new Store('alki', 2, 16, 4.6);
 
+//an array with each of our objects
+var locationObjects = [pike, seaTac, seaCenter, theHill, alki];
+console.log('locationObjects = ' + locationObjects);
 
-function register(location) {
-  location.gen();
-  var printThis = '';
-  for (var i = 0; i < location.genResults.length; i++) {
-    printThis += '<li>' + location.genResults[i] + '</li>';
+var reportResults = [pike.genResults, seaTac.genResults, seaCenter.genResults, theHill.genResults, alki.genResults];
+console.log('report results: ' + reportResults);
+
+function superMakeHead(){
+  for (var i = 0; i < locationObjects.length; i++) {
+    makeHead(locationObjects[i]);
   }
-
-  return printThis;
 }
-
-document.queryselector('ul').innerHTML = register();
-var nextItem = document.queryselector('ul')
-document.nextSibling
-*/
+superGen();
