@@ -1,117 +1,36 @@
 <!DOCTYPE>
 <html>
   <head>
+    <title>They're fish cookies.</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css"/>
   </head>
   <body>
-    <button onclick="reporting(pike)">Try it</button>
-      <script>
-
-          var i = 600;
-
-          function genHourlyReport(location) {
-            var randGen = Math.floor(Math.random() * (location.maxCust - location.minCust + 1)) + location.minCust;
-            for (i = 600; i <= 2000; i += 100) {
-              if (i < 1000) {
-                location.genResults.push(('0' + i + ' hours:' + randGen + 'cookies'));
-              } else {
-                location.genResults.push((i + ' hours:' + randGen + 'cookies'));
-              }
-            }
-
-            console.log(location.genResults);
-          }
-          /*
-          documentselect UL
-          firstchild (li)
-          next sibling (li2)
-          print
-          next sibling (li3)
-          print
-          parentnode (ul1)
-          next sibling (u2)
-          firstchild (li1 of u2)
-          next sibling (li2 of u2)
-
-
-          function register(location) {
-            location.gen();
-            var printThis = '';
-            for (var i = 0; i < location.genResults.length; i++) {
-              printThis += '<li>' + location.genResults[i] + '</li>';
-            }
-
-            return printThis;
-          }
-
-          document.queryselector('ul').innerHTML = register();
-          var nextItem = document.queryselector('ul')
-          document.nextSibling
-          */
-
-          var pike = {
-            minCust: 23,
-            maxCust: 65,
-            avgCust: 6.3,
-            genResults: [],
-            gen: function () {
-              genHourlyReport(pike);
-            },
-          };
-
-          var seaTac = {
-            minCust: 3,
-            maxCust: 24,
-            avgCust: 1.2,
-            genResults: [],
-            gen: function () {
-              return genHourlyReport(seaTac);
-            },
-
-          };
-
-          var seaCenter = {
-            minCust: 11,
-            maxCust: 38,
-            avgCust: 3.7,
-            genResults: [],
-            gen: function () {
-              return genHourlyReport(seaCenter);
-            },
-          };
-
-          var theHill = {
-            minCust: 20,
-            maxCust: 38,
-            avgCust: 2.3,
-            genResults: [],
-            gen: function () {
-              return genHourlyReport(theHill);
-            },
-          };
-
-          var alki = {
-            minCust: 2,
-            maxCust: 16,
-            avgCust: 4.6,
-            genResults: [],
-            gen: function () {
-              return genHourlyReport(alki);
-            },
-          };
-function reporting(location) {
-  location.gen()
-  var locationResults = location.genResults;
-  var locationResultsLength = locationResults.length;
-  document.createElement('ul');
-  var node = document.createElement("li");
-  for (var x = 0; x < 7; x++) {
-    var textNode = document.createTextNode(location.genResults[x]);
-    node.appendChild(textNode);
-    document.querySelector("li").appendChild(textNode);
-  }
-}
-      </script>
+    <h1>Daily Projections<h1>
+      <table id="pike">
+        <thead>
+          <h3> cookies needed per hour</h3>
+          <tr>
+            <td>Store Name</td>
+            <td>0600</td>
+            <td>0700</td>
+            <td>0800</td>
+            <td>0900</td>
+            <td>1000</td>
+            <td>1100</td>
+            <td>1200</td>
+            <td>1300</td>
+            <td>1400</td>
+            <td>1500</td>
+            <td>1600</td>
+            <td>1700</td>
+            <td>1800</td>
+            <td>1900</td>
+            <td>2000</td>
+          </tr>
+        </thead>
+      </table>
+    <script src = "array.js">
+    </script>
   </body>
 </html>
