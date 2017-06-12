@@ -1,25 +1,26 @@
 'use strict';
 
 //the constructor for each of my stores
-
 function Store(name, minCust, maxCust, avgCust) {
   this.name = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgCust = avgCust;
   this.genResults = [];
+  locationObjects.push(this);
 }
 
-//generates a random number between minCust and maxCust and pushes it into an an object's array.
+//generates a random number between minCust and maxCust, multiples it by the avg cookies/customer/store
+//and pushes it into an an object's array.
 function gen(location) {
   for (var i = 600; i <= 2000; i += 100) {
-    var randGen = Math.floor(Math.random() * (location.maxCust - location.minCust + 1)) + location.minCust;
+    var randGen = Math.random() * (location.maxCust - location.minCust + 1) + location.minCust;
+    randGen = Math.floor(randGen * location.avgCust);
     location.genResults.push(randGen);
-    }
+  }
 }
 
-
-//superGen generates projections for each of our stores
+//superGen calls gen() for each of our stores
 function superGen() {
   for (var x = 0; x < locationObjects.length; x++) {
     console.log(x);
@@ -27,15 +28,17 @@ function superGen() {
   }
 }
 
-//var rowEl = document.querySelector('tr');
+//declaring variables for creating HTMl elements in the DOM
 var rowEl = document.createElement('tr');
 var dataEl = document.createElement('td');
 var tableBodyEl = document.createElement('tbody');
 var tableEl = document.getElementById('pike');
 
+//apppending the table body to the table
 tableEl.appendChild(tableBodyEl);
 
-function printProjections(store) {
+//this puts the projecttions for a store into it's own row in the DOM
+function superPrintProjections(store) {
   var rowEl = document.createElement('tr');
   tableBodyEl.appendChild(rowEl);
   var dataEl = document.createElement('td');
@@ -45,43 +48,30 @@ function printProjections(store) {
   for (var i = 0; i < 15; i++) {
     var dataEl = document.createElement('td');
     dataEl.textContent = store.genResults[i];
-
-    console.log(dataEl);
-
     rowEl.appendChild(dataEl);
   }
-
-  console.log(rowEl);
-  console.log(dataEl);
 }
 
-//superMakeRow makes rows for each item in locationObjects
+//superMakeRow calls superGen() and makes rows for each item in locationObjects
 function superMakeRow() {
   superGen();
   for (var i = 0; i < locationObjects.length; i++) {
-    printProjections(locationObjects[i]);
+    superPrintProjections(locationObjects[i]);
   }
 }
 
-//tableEl.appendChild(tableBodyEl);
+//an empty array for our objects to live in
+var locationObjects = [];
 
-//using the constructor to create 5 stores
+//using the constructor to create 5 stores and push them into locationObjects
 var pike = new Store('pike', 23, 65, 6.3);
 var seaTac = new Store('seaTac', 3, 24, 1.2);
 var seaCenter = new Store('seaCenter', 11, 38, 3.7);
 var theHill = new Store('theHill', 20, 38, 2.3);
 var alki = new Store('alki', 2, 16, 4.6);
 
-//an array with each of our objects
-var locationObjects = [pike, seaTac, seaCenter, theHill, alki];
-console.log('locationObjects = ' + locationObjects);
-
+//create an array which will hold projects for each object
 var reportResults = [pike.genResults, seaTac.genResults, seaCenter.genResults, theHill.genResults, alki.genResults];
-console.log('report results: ' + reportResults);
 
-function superMakeHead(){
-  for (var i = 0; i < locationObjects.length; i++) {
-    makeHead(locationObjects[i]);
-  }
-}
-superGen();
+//calling the function that makes it all happpen.
+superMakeRow();
