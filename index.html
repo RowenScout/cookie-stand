@@ -5,77 +5,81 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css"/>
   </head>
-  <form id="form">
-      <fieldset>
-        <legend>Add New Store</legend>
+<form id="form">
+  <fieldset>
+  <legend>Add New Store</legend>
+    <table>
+      <tr>
         <div>
-          <label for="storeName">New Store Name:</label>
-<<<<<<< HEAD
-          <input id="item-name-input" type="text" name="itemName" placeholder="Shoes" required>
+          <td>
+            <label for="storeName">New Store Name:</label>
+          </td>
+          <td>
+            <input id="store-name-input" type="text" name="storeName" placeholder="Store Name" required>
+          </td>
         </div>
-
+      </tr>
+      <tr>
         <div>
-=======
-          <input id="store-name-input" type="text" name="storeName" placeholder="Store Name" required>
-        </div>
-
-       <div>
->>>>>>> bf8d5f4a9e7d36a81c9e1e92589a2a289c41415a
-          <label for="minCust">Minimum Customer/Hour:</label>
-          <input type="number" step="any" name="minCust" value="" required>
-        </div>
-
-<<<<<<< HEAD
-        <div>
-=======
-       <div>
->>>>>>> bf8d5f4a9e7d36a81c9e1e92589a2a289c41415a
-          <label for="maxCust">Maximum Customer/Hour</label>
-          <input type="number" name="maxCust" value="">
-        </div>
-
-<<<<<<< HEAD
-        <div>
-=======
-       <div>
->>>>>>> bf8d5f4a9e7d36a81c9e1e92589a2a289c41415a
-          <label for="avgCust">Average Cookies/Customer</label>
-          <input type="number" name="avgCust" value="">
-        </div>
-
-<<<<<<< HEAD
-        <input type="submit" value="Add New Store">
-=======
-       <input type="submit" value="Add New Store">
->>>>>>> bf8d5f4a9e7d36a81c9e1e92589a2a289c41415a
-      </fieldset>
-    </form>
-  <body>
-    <h1>Daily Projections<h1>
-      <table id="pike">
-        <thead>
-          <h3> cookies needed per hour</h3>
           <tr>
-            <td>Store Name</td>
-            <td>0600</td>
-            <td>0700</td>
-            <td>0800</td>
-            <td>0900</td>
-            <td>1000</td>
-            <td>1100</td>
-            <td>1200</td>
-            <td>1300</td>
-            <td>1400</td>
-            <td>1500</td>
-            <td>1600</td>
-            <td>1700</td>
-            <td>1800</td>
-            <td>1900</td>
-            <td>2000</td>
+            <td>
+              <label for="minCust">Minimum Customer/Hour:</label>
+            </td>
+            <td>
+              <input type="number" step="any" name="minCust" min="0" step="any" value="" required>
+            </td>
           </tr>
-        </thead>
+        </div>
+        <div>
+          <tr>
+            <td>
+              <label for="maxCust">Maximum Customer/Hour:</label>
+            </td>
+            <td>
+              <input type="number" name="maxCust" step="any" min="0" value="">
+            </td>
+          </tr>
+        </div>
+        <div>
+          <tr>
+            <td>
+              <label for="avgCust">Average Cookies/Customer</label>
+            </td>
+            <td>
+              <input type="number" name="avgCust" step="any" min="0" value="">
+            </td>
+          </tr>
+        </div>
       </table>
-    <script src = "array.js">
-    </script>
-  </body>
+  <input type="submit" value="Add New Store">
+    </fieldset>
+  </form>
+<body>
+  <h1>Daily Projections<h1>
+    <table id="pike">
+      <thead>
+        <h4> cookies needed per hour</h4>
+        <tr id='topRow'>
+          <td>Store Name</td>
+          <td>6:00am&nbsp&nbsp</td>
+          <td>7:00am&nbsp&nbsp</td>
+          <td>8:00am&nbsp&nbsp</td>
+          <td>9:00am&nbsp&nbsp</td>
+          <td>10:00am&nbsp&nbsp</td>
+          <td>11:00am&nbsp&nbsp</td>
+          <td>12:00am&nbsp&nbsp</td>
+          <td>1:00pm&nbsp&nbsp</td>
+          <td>2:00pm&nbsp&nbsp</td>
+          <td>3:00pm&nbsp&nbsp</td>
+          <td>4:00pm&nbsp&nbsp</td>
+          <td>5:00pm&nbsp&nbsp</td>
+          <td>6:00pm&nbsp&nbsp</td>
+          <td>7:00pm&nbsp&nbsp</td>
+          <td>8:00pm&nbsp&nbsp</td>
+        </tr>
+      </thead>
+    </table>
+  <script src = "array.js">
+  </script>
+</body>
 </html>

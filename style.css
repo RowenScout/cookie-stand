@@ -1,4 +1,4 @@
-h1{
+*{
   background-color: grey;
 }
 p {
@@ -7,4 +7,21 @@ p {
 }
 .page-content {
   font: comic;
+}
+table{
+  margin-top: 0px;
+  border: 1px solid;
+}
+h4{
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+#topRow{
+  font-weight: bold;
+}
+legend{
+  font-weight: bold;
+}
+fieldset{
+  width: 370px
 }
