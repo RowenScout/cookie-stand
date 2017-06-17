@@ -13,7 +13,7 @@ function Store(name, minCust, maxCust, avgCust) {
 //generates a random number between minCust and maxCust, multiples it by the avg cookies/customer/store
 //and pushes it into an an object's array.
 function gen(location) {
-  for (var i = 600; i <= 2000; i += 100) {
+  for (var i = 0; i < 14; i ++) {
     var randGen = Math.random() * (location.maxCust - location.minCust + 1) + location.minCust;
     randGen = Math.floor(randGen * location.avgCust);
     location.genResults.push(randGen);
@@ -39,6 +39,7 @@ tableEl.appendChild(tableBodyEl);
 
 //this puts the projecttions for a store into it's own row in the DOM
 function superPrintProjections(store) {
+  superGen();
   var rowEl = document.createElement('tr');
   tableBodyEl.appendChild(rowEl);
   var dataEl = document.createElement('td');
