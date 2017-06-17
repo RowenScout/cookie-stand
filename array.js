@@ -8,6 +8,8 @@ function Store(name, minCust, maxCust, avgCust) {
   this.avgCust = avgCust;
   this.genResults = [];
   locationObjects.push(this);
+  gen(this);
+  printProjections(this);
 }
 
 //generates a random number between minCust and maxCust, multiples it by the avg cookies/customer/store
@@ -21,12 +23,12 @@ function gen(location) {
 }
 
 //superGen calls gen() for each of our stores
-function superGen() {
-  for (var x = 0; x < locationObjects.length; x++) {
-    console.log(x);
-    gen(locationObjects[x]);
-  }
-}
+// function superGen() {
+//   for (var x = 0; x < locationObjects.length; x++) {
+//     console.log(x);
+//     gen(locationObjects[x]);
+//   }
+// }
 
 //declaring variables for creating HTMl elements in the DOM
 var rowEl = document.createElement('tr');
@@ -38,8 +40,12 @@ var tableEl = document.getElementById('pike');
 tableEl.appendChild(tableBodyEl);
 
 //this puts the projecttions for a store into it's own row in the DOM
+<<<<<<< HEAD
 function superPrintProjections(store) {
   superGen();
+=======
+function printProjections(store) {
+>>>>>>> bf8d5f4a9e7d36a81c9e1e92589a2a289c41415a
   var rowEl = document.createElement('tr');
   tableBodyEl.appendChild(rowEl);
   var dataEl = document.createElement('td');
@@ -54,12 +60,11 @@ function superPrintProjections(store) {
 }
 
 //superMakeRow calls superGen() and makes rows for each item in locationObjects
-function superMakeRow() {
-  superGen();
-  for (var i = 0; i < locationObjects.length; i++) {
-    superPrintProjections(locationObjects[i]);
-  }
-}
+// function superMakeRow() {
+//   for (var i = 0; i < locationObjects.length; i++) {
+//     printProjections(locationObjects[i]);
+//   }
+// }
 
 //an empty array for our objects to live in
 var locationObjects = [];
@@ -75,4 +80,24 @@ var alki = new Store('alki', 2, 16, 4.6);
 var reportResults = [pike.genResults, seaTac.genResults, seaCenter.genResults, theHill.genResults, alki.genResults];
 
 //calling the function that makes it all happpen.
-superMakeRow();
+// superMakeRow();
+
+var form = document.getElementById('form');
+
+form.addEventListener('submit', handleSubmit);
+
+function handleSubmit(event){
+   event.preventDefault();
+   console.log(event.target.storeName.value);
+   console.log(event.target.minCust.value);
+   console.log(event.target.maxCust.value);
+   console.log(event.target.avgCust.value);
+
+   var storeName = event.target.storeName.value;
+   var minCust = event.target.minCust.value;
+   var maxCust = event.target.maxCust.value;
+   var avgCust = event.target.avgCust.value;
+
+   var newStore = new Store(storeName, minCust, maxCust, avgCust);
+
+}
