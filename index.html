@@ -5,6 +5,32 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css"/>
   </head>
+  <form id="form">
+      <fieldset>
+        <legend>Add New Store</legend>
+        <div>
+          <label for="storeName">New Store Name:</label>
+          <input id="store-name-input" type="text" name="storeName" placeholder="Store Name" required>
+        </div>
+
+       <div>
+          <label for="minCust">Minimum Customer/Hour:</label>
+          <input type="number" step="any" name="minCust" value="" required>
+        </div>
+
+       <div>
+          <label for="maxCust">Maximum Customer/Hour</label>
+          <input type="number" name="maxCust" value="">
+        </div>
+
+       <div>
+          <label for="avgCust">Average Cookies/Customer</label>
+          <input type="number" name="avgCust" value="">
+        </div>
+
+       <input type="submit" value="Add New Store">
+      </fieldset>
+    </form>
   <body>
     <h1>Daily Projections<h1>
       <table id="pike">
