@@ -1,5 +1,5 @@
 *{
-  background-color: grey;
+  background-color: #ffd3ae;
 }
 p {
   border: 5px solid darkgrey;
@@ -24,4 +24,13 @@ legend{
 }
 fieldset{
   width: 370px
+}
+.center{
+  text-align: center;
+}
+h2{
+  color: #835b32;
+}
+.text{
+  color: #835b32;
 }
