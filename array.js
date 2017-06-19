@@ -15,10 +15,24 @@ function Store(name, minCust, maxCust, avgCust) {
 //generates a random number between minCust and maxCust, multiples it by the avg cookies/customer/store
 //and pushes it into an an object's array.
 function gen(location) {
-  for (var i = 600; i <= 2000; i += 100) {
+  for (var i = 0; i <= 14; i++) {
     var randGen = Math.random() * (location.maxCust - location.minCust + 1) + location.minCust;
     randGen = Math.floor(randGen * location.avgCust);
     location.genResults.push(randGen);
+  }
+}
+
+var total = ['Total'];
+
+
+function totals() {
+  for (var i = 0; i < pike.genResults.length; i++) {
+    var sum = 0;
+    for (var x = 0; x < locationObjects.length; x++) {
+      sum = sum + locationObjects[x].genResults[i];
+    }
+
+    total.push(sum);
   }
 }
 
@@ -39,7 +53,7 @@ function printProjections(store) {
   dataEl.textContent = store.name;
   rowEl.appendChild(dataEl);
 
-  for (var i = 0; i < 15; i++) {
+  for (var i = 0; i <= 14; i++) {
     var dataEl = document.createElement('td');
     dataEl.textContent = store.genResults[i];
     rowEl.appendChild(dataEl);
@@ -56,22 +70,12 @@ var seaCenter = new Store('seaCenter', 11, 38, 3.7);
 var theHill = new Store('theHill', 20, 38, 2.3);
 var alki = new Store('alki', 2, 16, 4.6);
 
-//create an array which will hold projects for each object
-var reportResults = [pike.genResults, seaTac.genResults, seaCenter.genResults, theHill.genResults, alki.genResults];
-
-//calling the function that makes it all happpen.
-// superMakeRow();
-
 var form = document.getElementById('form');
 
 form.addEventListener('submit', handleSubmit);
 
 function handleSubmit(event) {
   event.preventDefault();
-  console.log(event.target.storeName.value);
-  console.log(event.target.minCust.value);
-  console.log(event.target.maxCust.value);
-  console.log(event.target.avgCust.value);
 
   var storeName = event.target.storeName.value;
   var minCust = event.target.minCust.value;
@@ -79,5 +83,34 @@ function handleSubmit(event) {
   var avgCust = event.target.avgCust.value;
 
   var newStore = new Store(storeName, minCust, maxCust, avgCust);
-
+  printTotals();
 }
+
+// function replaceTotals() {
+//   var footEl = document.getElementById('tfoot');
+//   var rowEl = document.createElement('tr');
+//   footEl.replaceChild(rowEl, rowEl);
+//   var dataEl = document.createElement('td');
+//
+//   for (var i = 0; i < 15; i++) {
+//     var current = document.getElementById(i);
+//     current.textContent = total[i];
+//     rowEl.replaceChild(dataEl, dataEl);
+//   }
+// }
+
+function printTotals() {
+  var footEl = document.getElementById('tfoot');
+  footEl.innerHTML = "";
+  var rowEl = document.createElement('tr');
+  footEl.appendChild(rowEl);
+
+  for (var i = 0; i <= 15; i++) {
+    var dataEl = document.createElement('td');
+    dataEl.textContent = total[i];
+    rowEl.appendChild(dataEl);
+  }
+}
+
+totals();
+printTotals();
